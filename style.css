@@ -93,3 +93,30 @@
     display: flex;
     gap: 2rem;
 }
+
+.credit-card .name-group {
+    flex-grow: 1;
+}
+
+.credit-card .front::before {
+    content: "";
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    border-radius: 100%;
+    background-color: hsl(0, 0%, 100%, .15);
+    top: -250px;
+    left: -150px;
+    z-index: -1;
+}
+.credit-card .front::after {
+    content: "";
+    position: absolute;
+    height: 600px;
+    width: 670px;
+    border-radius: 100%;
+    background-color: hsl(0, 0%, 100%, .075);
+    bottom: -475px;
+    left: -150px;
+    z-index: -1;
+}
