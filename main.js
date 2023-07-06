@@ -13,7 +13,7 @@ document.addEventListener("keydown", e => {
     const key = e.key
     if(!isConnectedInput(input)) return
 
-})
+
 
 switch (key) {
     case "ArrowLeft": {
@@ -38,9 +38,29 @@ switch (key) {
         break
     }
     default: {
+        if (e.ctrlKey || e.altKey) return
+        if (key.match(/^[^0-9]$/)) return e.preventDefault()
+
+        e.preventDefault()
+        onInputChange(input, key)
 
     }
 }
+})
+
+function onInputChange(input, newValue) {
+    const start = input.selectionStart
+    const end = input.selectionEnd
+    updateInputValue(input, newValue, start, end)
+    focusInput()
+
+}
+
+function updateInputValue(input, extraValue, start = 0, end = 0) {
+    const newValue = `${input.value.substring(0, start)}`
+
+}
+
 
 
 
