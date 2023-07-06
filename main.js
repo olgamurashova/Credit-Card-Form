@@ -57,7 +57,14 @@ function onInputChange(input, newValue) {
 }
 
 function updateInputValue(input, extraValue, start = 0, end = 0) {
-    const newValue = `${input.value.substring(0, start)}`
+    const newValue = `${input.value.substring(0, start)}${extraValue}${input.value.substring(end, 4)}`
+    input.value = newValue.substring(0, 4)
+    if (newValue > 4) {
+        const next = input.nextElementSibling
+        if (next == null) return
+        updateInputValue(next, newValue.substring(4))
+
+    }
 
 }
 
